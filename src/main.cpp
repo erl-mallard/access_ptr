@@ -18,7 +18,7 @@ alignas(com) uint8_t usb_com_storage[sizeof(com)];
 access_ptr<com> init_com_mock()
 {
    static auto ptr = access_ptr<com>{ new (&usb_com_storage) com{} };
-   return std::move(ptr); //maybe UB. If so, make sure ptr is not being moved from twice.
+   return std::move(ptr);
 }
 
 int main()
